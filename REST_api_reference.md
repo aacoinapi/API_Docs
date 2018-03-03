@@ -10,7 +10,7 @@ msg|false|string|提示信息
 data|false|Object|数据
 ----------
 
-- **/common/symbols 获取所有交易对**
+- **/common/symbols 获取所有交易市场**
 
 响应数据中的data说明：
 
