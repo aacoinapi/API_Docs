@@ -63,4 +63,5 @@ API 请求在通过 Internet 发送的过程中极有可能被篡改。为了确
 3、最终将计算出来的签名添加到 API 请求中。
 
 例：
-api.aacoin.com/v1/account/statement?accessKey=xxx&price=xxx&quantity=xxx&symbol=xxx&type=xxx**&sign=ccc4c65891f1cd951510ea65e3f2dd87c024972c188f46c60216af2e9d3d9727**
+
+    https://api.aacoin.com/v1/account/statement?accessKey=xxx&price=xxx&quantity=xxx&symbol=xxx&type=xxx&sign=ccc4c65891f1cd951510ea65e3f2dd87c024972c188f46c60216af2e9d3d9727

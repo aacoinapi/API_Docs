@@ -1,7 +1,7 @@
 
-# 行情API #
+# API #
 ----------
--
+
 **/common/symbols 获取所有交易对**
 
 响应数据：
@@ -24,7 +24,7 @@ data说明：
     ]
 
 
--
+
 **/common/currencies 获取所有币种**
 
 响应数据：
@@ -39,13 +39,13 @@ data说明：
     ["币种代码"]
 
 
--
+
 **/common/timestamp 获取系统当前时间戳**
 
 响应数据为Number类型
 
 
--
+
 **/account/accounts 获取所有的账户信息**
 
 响应数据：
@@ -70,7 +70,7 @@ data说明：
 	    }
     ]
 
--
+
 **/account/statement 获取账户操作日志**
 
 请求参数:
