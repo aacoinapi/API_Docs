@@ -14,11 +14,13 @@ data|false|Object|数据
 
 请求参数:
 
+
 参数名称|是否必须|类型|描述|默认值|取值范围
----|---|---|---|---
-symbol|true|String|交易市场|-|-
-period|true|String|K线类型|-|1m、5m、15m、60m、1d、1w
+---|---|---|---|---|---
+symbol|true|String|交易市场||
+period|true|String|K线类型||1m、5m、15m、60m、1d、1w
 size|false|Number|获取数量|150|1~1000
+
 
 响应数据中的data说明：
 
@@ -34,14 +36,14 @@ size|false|Number|获取数量|150|1~1000
 	]
 
 
-
 - **/market/depth 获取 Market Depth 数据**
 
 请求参数:
 
+
 参数名称|是否必须|类型|描述|默认值|取值范围
----|---|---|---|---
-symbol|true|String|交易市场|-|-
+---|---|---|---|---|---
+symbol|true|String|交易市场||
 
 响应数据中的data说明：
 
@@ -54,9 +56,10 @@ symbol|true|String|交易市场|-|-
 
 请求参数:
 
+
 参数名称|是否必须|类型|描述|默认值|取值范围
----|---|---|---|---
-symbol|true|String|交易市场|-|-
+---|---|---|---|---|---
+symbol|true|String|交易市场||
 
 响应数据中的data说明：
 
