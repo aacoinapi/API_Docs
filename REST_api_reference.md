@@ -1,5 +1,5 @@
 
-# API #
+# API Reference#
 
 所有请求响应数据：
 
@@ -9,7 +9,67 @@ status|true|String|状态值
 msg|false|string|提示信息
 data|false|Object|数据
 ----------
+# 行情API #
+- **/market/kline 获取K线数据**
 
+请求参数:
+
+参数名称|是否必须|类型|描述|默认值|取值范围
+---|---|---|---|---
+symbol|true|String|交易市场|-|-
+period|true|String|K线类型|-|1m、5m、15m、60m、1d、1w
+size|false|Number|获取数量|150|1~1000
+
+响应数据中的data说明：
+
+	[
+	    [
+	        时间(ms),
+	        开盘价,
+	        最高价,
+	        最低价,
+	        收盘价,
+	        成交量
+	    ]
+	]
+
+
+
+- **/market/depth 获取 Market Depth 数据**
+
+请求参数:
+
+参数名称|是否必须|类型|描述|默认值|取值范围
+---|---|---|---|---
+symbol|true|String|交易市场|-|-
+
+响应数据中的data说明：
+
+	{
+	    "bids": 买盘,[price(成交价), amount(成交量)],
+	    "asks": 卖盘,[price(成交价), amount(成交量)]
+	}
+
+- **/market/trade 获取 Trade Detail 数据**
+
+请求参数:
+
+参数名称|是否必须|类型|描述|默认值|取值范围
+---|---|---|---|---
+symbol|true|String|交易市场|-|-
+
+响应数据中的data说明：
+
+	[
+	    {
+	        "quantity": "成交数量",
+	        "price": "成交价",
+	        "transactionTime": "成交时间（格式：HH:mm:ss）",
+	        "mainMarket": "成交类型：buy买，sell卖"
+	    }
+	]
+
+# 公共API #
 - **/common/symbols 获取所有交易市场**
 
 响应数据中的data说明：
@@ -39,7 +99,7 @@ data|false|Object|数据
 响应数据中的data说明：响应数据为Number类型
 
 
-
+# 用户资产API #
 - **/account/accounts 获取所有的账户信息**
 
 
@@ -90,6 +150,7 @@ currencyCode|true|String|币种代码
 address|true|String|提现到账地址
 amount|true|String|提现金额
 
+# 交易API #
 - **/order/place 下单**
 
 请求参数:
