@@ -66,7 +66,7 @@ data|false|Object|数据
 参数名称|是否必须|类型|描述
 ---|---|---|---
 accountId|true|Number|账户ID
-limit|false|Number|显示数量
+limit|false|Number|显示数量（取值范围为0~100）
 
 
 响应数据中的data说明：
