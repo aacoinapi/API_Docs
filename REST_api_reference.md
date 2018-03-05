@@ -35,6 +35,26 @@ size|false|Number|获取数量|150|1~1000
 	    ]
 	]
 
+- **/market/detail 获取市场详情**
+
+请求参数:
+
+参数名称|是否必须|类型|描述|默认值|取值范围
+---|---|---|---|---
+symbol|true|String|交易市场|-|-
+
+响应数据中的data说明：
+
+	{
+	    "symbol": "交易市场",
+	    "highest": "24小时最高价",
+	    "lowest": "24小时最低价",
+	    "current": "最新价",
+	    "totalTradeAmount": "24小时成交量",
+	    "price24HourBefore": 24小时前的开盘价,
+	    "time": "时间（例：2018-03-04 16:21:24）"
+	}
+
 
 - **/market/depth 获取 Market Depth 数据**
 
