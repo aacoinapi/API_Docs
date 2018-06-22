@@ -56,6 +56,24 @@ symbol|true|String|交易市场|-|-
 	}
 
 
+- **/market/tickers 获取所有行情数据**
+
+响应数据中的data说明：
+
+	{
+	    "ticker": [{
+			symbol: 交易对（交易对1简称_交易对2简称） 
+			buy: 买一价 
+			high: 最高价 
+			last: 最新成交价 
+			low: 最低价 
+			sell: 卖一价 
+			vol: 成交量(最近的24小时)
+		}],
+	    "date": 时间（例：2018-03-04 16:21:24）
+	}
+
+
 - **/market/depth 获取 Market Depth 数据**
 
 请求参数:
@@ -71,6 +89,7 @@ symbol|true|String|交易市场||
 	    "bids": 买盘,[price(成交价), amount(成交量)],
 	    "asks": 卖盘,[price(成交价), amount(成交量)]
 	}
+
 
 - **/market/trade 获取 Trade Detail 数据**
 
@@ -163,15 +182,6 @@ limit|false|Number|显示数量（取值范围为0~100）
 	    }
     ]
 
-- **/account/withdraw 提现**
-
-请求参数:
-
-参数名称|是否必须|类型|描述
----|---|---|---
-currencyCode|true|String|币种代码
-address|true|String|提现到账地址
-amount|true|String|提现金额
 
 # 交易API #
 - **/order/place 下单**
