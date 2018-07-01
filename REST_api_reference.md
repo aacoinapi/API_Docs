@@ -199,6 +199,29 @@ price|false|Number|价格
 响应数据中的data说明：订单ID号
 
 
+- **/order/detail 获取订单详情**
+
+请求参数:
+
+参数名称|是否必须|类型|描述
+---|---|---|---
+orderId|true|String|订单ID号
+响应数据：
+```
+{
+    "orderId": 订单ID号,
+    "symbol": "交易市场",
+    "price": 委托价格,
+    "type": "sell：卖出；buy：买入",
+    "priceType": "limit：限价；market：市价",
+    "orderTime": "委托时间（格式：yyyy-MM-dd HH:mm:ss）",
+    "filledQuantity": 已成交数量,
+    "quantity": 委托数量,
+    "status": "cancelling：等待取消",
+    "filledAmount": 已成交金额
+}
+```
+
 - **/order/cancel 撤单**
 
 请求参数:
@@ -262,7 +285,7 @@ size|false|Number|每页条数（默认10）
 	            "orderTime": "委托时间（格式：yyyy-MM-dd HH:mm:ss）",
 	            "filledQuantity": 已成交数量,
 	            "quantity": 委托数量,
-	            "status": "open：尚未成交；partial_filled：部分成交",
+	            "status": "cancelling：等待取消",
 	            "filledAmount": 已成交金额
 	        }
 	    ]
@@ -296,7 +319,7 @@ size|false|Number|每页条数（默认10）
 	            "orderTime": "委托时间（格式：yyyy-MM-dd HH:mm:ss）",
 	            "filledQuantity": 已成交数量,
 	            "quantity": 委托数量,
-	            "status": "filled：完全成交；cancelled：撤单；partial_filled：部分成交",
+	            "status": "cancelling：等待取消",
 	            "filledAmount": 已成交金额
 	        }
 	    ]
