@@ -9,6 +9,7 @@ status|true|String|状态值
 msg|false|string|提示信息
 data|false|Object|数据
 ----------
+
 # 行情API #
 - **/market/kline 获取K线数据**
 
@@ -40,7 +41,7 @@ size|false|Number|获取数量|150|1~1000
 请求参数:
 
 参数名称|是否必须|类型|描述
----|---|---|---|---
+---|---|---|--
 symbol|true|String|交易市场
 
 响应数据中的data说明：
@@ -107,7 +108,8 @@ symbol|true|String|交易市场||
 	        "quantity": "成交数量",
 	        "price": "成交价",
 	        "transactionTime": "成交时间（格式：HH:mm:ss）",
-	        "mainMarket": "成交类型：buy买，sell卖"
+	        "mainMarket": "成交类型：buy买，sell卖".
+		"fullTransactionTime": "成交时间（格式：yyyy-MM-dd HH:mm:ss）"
 	    }
 	]
 
