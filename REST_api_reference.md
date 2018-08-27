@@ -193,7 +193,7 @@ limit|false|Number|显示数量（取值范围为0~100）
 参数名称|是否必须|类型|描述
 ---|---|---|---
 symbol|true|String|交易市场（例：BCC_ETH）
-type|true|String|交易类型（buy-limit：限价买入；buy-market：市价买入；sell-limit：限价卖出；sell-market：市价卖出）
+type|true|String|交易类型（buy-limit：限价买入；sell-limit：限价卖出；）
 quantity|true|Number|数量
 price|false|Number|价格
 
@@ -267,7 +267,7 @@ orderIds|true|String|多个订单ID号（以,隔开）
 参数名称|是否必须|类型|描述
 ---|---|---|---
 symbol|true|String|交易市场（例：BCC_ETH）
-type|false|String|交易类型（buy-limit：限价买入；buy-market：市价买入；sell-limit：限价卖出；sell-market：市价卖出）
+type|false|String|交易类型（buy-limit：限价买入；sell-limit：限价卖出；）
 page|false|Number|页数（默认1）
 size|false|Number|每页条数（默认10）
 
@@ -301,7 +301,7 @@ size|false|Number|每页条数（默认10）
 参数名称|是否必须|类型|描述
 ---|---|---|---
 symbol|true|String|交易市场（例：BCC_ETH）
-type|false|String|交易类型（buy-limit：限价买入；buy-market：市价买入；sell-limit：限价卖出；sell-market：市价卖出）
+type|false|String|交易类型（buy-limit：限价买入；sell-limit：限价卖出）
 page|false|Number|页数（默认1）
 size|false|Number|每页条数（默认10）
 
