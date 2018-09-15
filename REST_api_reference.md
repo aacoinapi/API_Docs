@@ -56,6 +56,12 @@ symbol|true|String|交易市场
 
 - **/market/tickers 获取交易对行情数据**
 
+请求参数:
+
+参数名称|是否必须|类型|描述
+---|---|---|--
+symbol|false|String|交易市场
+
 响应数据中的data说明：
 
 	{
