@@ -36,7 +36,7 @@ size|false|Number|获取数量|150|1~1000
 	    ]
 	]
 
-- **/market/detail 获取市场详情**
+- **/market/detail 获取交易对详情**
 
 请求参数:
 
@@ -47,17 +47,14 @@ symbol|true|String|交易市场
 响应数据中的data说明：
 
 	{
-	    "symbol": "交易市场",
-	    "highest": "24小时最高价",
-	    "lowest": "24小时最低价",
-	    "current": "最新价",
-	    "totalTradeAmount": "24小时成交量",
-	    "price24HourBefore": 24小时前的开盘价,
-	    "time": "时间（例：2018-03-04 16:21:24）"
+	    "symbol": "交易对",
+	    "priceDecimal": "价格小数位",
+	    "quantityDecimal": "数量小数位",
+	    "status": "状态。waiting：尚未开放交易；open：开放交易; closed：市场已经关闭"
 	}
 
 
-- **/market/tickers 获取所有行情数据**
+- **/market/tickers 获取交易对行情数据**
 
 响应数据中的data说明：
 
@@ -69,7 +66,11 @@ symbol|true|String|交易市场
 			last: 最新成交价 
 			low: 最低价 
 			sell: 卖一价 
-			vol: 成交量(最近的24小时)
+			vol: 24小时成交量,
+			obv: 24小时成交额,
+			changeAmount: 24小时价格变化量,
+			changePercent: 24小时价格变化百分比,
+			mining: true为挖矿区；false为非挖矿区
 		}],
 	    "date": 时间（例：2018-03-04 16:21:24）
 	}
