@@ -19,7 +19,7 @@ data|false|Object|数据
 参数名称|是否必须|类型|描述|默认值|取值范围
 ---|---|---|---|---|---
 symbol|true|String|交易市场||
-period|true|String|K线类型||1m、5m、15m、60m、1d、1w
+period|true|String|K线类型||1m、5m、15m、30m、1h、2h、4h、6h、12h、1d、1w
 size|false|Number|获取数量|150|1~1000
 
 
