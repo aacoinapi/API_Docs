@@ -1,365 +1,260 @@
-
 # API Reference#
-
-所有请求响应数据：
-
-参数名称|是否必须|数据类型|描述
----|---|---|---
-status|true|String|状态值
-msg|false|string|提示信息
-data|false|Object|数据
-----------
-
 # 行情API #
-- **/market/kline 获取K线数据**
+- **/market/groups 获取交易分组**
 
-请求参数:
-
-
-参数名称|是否必须|类型|描述|默认值|取值范围
----|---|---|---|---|---
-symbol|true|String|交易市场||
-period|true|String|K线类型||1m、5m、15m、30m、1h、2h、4h、6h、12h、1d、1w
-size|false|Number|获取数量|150|1~1000
-
-
-响应数据中的data说明：
-
-	[
-	    [
-	        时间(ms),
-	        开盘价,
-	        最高价,
-	        最低价,
-	        收盘价,
-	        成交量
-	    ]
-	]
-
-- **/market/detail 获取交易对详情**
-
-请求参数:
-
-参数名称|是否必须|类型|描述
----|---|---|--
-symbol|true|String|交易市场
-
-响应数据中的data说明：
-
-	{
-	    "symbol": "交易对",
-	    "priceDecimal": "价格小数位",
-	    "quantityDecimal": "数量小数位",
-	    "status": "状态。waiting：尚未开放交易；open：开放交易; closed：市场已经关闭"
-	}
-
-
-- **/market/tickers 获取交易对行情数据**
-
-请求参数:
-
-参数名称|是否必须|类型|描述
----|---|---|--
-symbol|false|String|交易市场
-
-响应数据中的data说明：
-
-	{
-	    "ticker": [{
-			symbol: 交易对（交易对1简称_交易对2简称） 
-			buy: 买一价 
-			high: 最高价 
-			last: 最新成交价 
-			low: 最低价 
-			sell: 卖一价 
-			vol: 24小时成交量,
-			obv: 24小时成交额,
-			changeAmount: 24小时价格变化量,
-			changePercent: 24小时价格变化百分比,
-			mining: true为挖矿区；false为非挖矿区
-		}],
-	    "date": 时间（例：2018-03-04 16:21:24）
-	}
-
-
-- **/market/depth 获取 Market Depth 数据**
-
-请求参数:
-
-
-参数名称|是否必须|类型|描述|默认值|取值范围
----|---|---|---|---|---
-symbol|true|String|交易市场||
-
-响应数据中的data说明：
-
-	{
-	    "bids": 买盘,[price(成交价), amount(成交量)],
-	    "asks": 卖盘,[price(成交价), amount(成交量)]
-	}
-
-
-- **/market/trade 获取 Trade Detail 数据**
-
-请求参数:
-
-
-参数名称|是否必须|类型|描述|默认值|取值范围
----|---|---|---|---|---
-symbol|true|String|交易市场||
-
-响应数据中的data说明：
-
-	[
-	    {
-	        "quantity": "成交数量",
-	        "price": "成交价",
-	        "transactionTime": "成交时间（格式：HH:mm:ss）",
-	        "mainMarket": "成交类型：buy买，sell卖".
-		"fullTransactionTime": "成交时间（格式：yyyy-MM-dd HH:mm:ss）"
-	    }
-	]
-
-# 公共API #
-- **/common/symbols 获取所有交易市场**
-
-响应数据中的data说明：
+响应数据说明：
 
     [
-    	{
-    	"baseCurrency": "基础币种",
-    	"quoteCurrency": "计价币种",
-    	"priceDecimal": 价格的最大小数位数,
-    	"quantityDecimal": 数量的最大小数位数,
-    	"symbolName": "交易市场名称"
-    	}
+        {
+            "id": 分组ID,
+        	"groupCode": 分组代码,
+        	"enabled": 启用状态,
+        	"groupName": 分组名称
+        }
     ]
 
+- **/market/config 获取交易配置**
 
-
-- **/common/currencies 获取所有币种**
-
-响应数据中的data说明：
-
-    ["币种代码"]
-
-
-
-- **/common/timestamp 获取系统当前时间戳**
-
-响应数据中的data说明：响应数据为Number类型
-
-
-# 用户资产API #
-- **/account/accounts 获取所有的账户信息**
-
-
-响应数据中的data说明：
-
-    [
-	    {
-		    "currencyCode": "币种代码",
-		    "accounts": [
-			    {
-				    "accountId": 账户ID,
-				    "balance": 余额,
-				    "type": "账户类型（trade：交易账户；frozen：冻结账户）"
-			    }
-		    ]
-	    }
-    ]
-
-
-- **/account/statement 获取账户操作日志**
-
-请求参数:
+请求参数：
 
 参数名称|是否必须|类型|描述
----|---|---|---
-accountId|true|Number|账户ID
-limit|false|Number|显示数量（取值范围为0~100）
-
-
-响应数据中的data说明：
-
-    [
-	    {
-		    "time": "时间（格式：yyyy-MM-dd HH:mm:ss）",
-		    "event": "取值范围：提现、充值、交易、挂单、撤单、分发",
-		    "amount": 本次操作金额,
-		    "afterBalance": 本次操作之后的金额
-	    }
-    ]
-
-
-# 交易API #
-- **/order/place 下单**
-
-请求参数:
-
-参数名称|是否必须|类型|描述
----|---|---|---
-symbol|true|String|交易市场（例：BCC_ETH）
-type|true|String|交易类型（buy-limit：限价买入；sell-limit：限价卖出；）
-quantity|true|Number|数量
-price|false|Number|价格
-
-
-响应数据中的data说明：订单ID号
-
-
-- **/order/detail 获取订单详情**
-
-请求参数:
-
-参数名称|是否必须|类型|描述
----|---|---|---
-orderId|true|String|订单ID号
-响应数据：
-```
-{
-    "orderId": 订单ID号,
-    "symbol": "交易市场",
-    "price": 委托价格,
-    "type": "sell：卖出；buy：买入",
-    "priceType": "limit：限价；market：市价",
-    "orderTime": "委托时间（格式：yyyy-MM-dd HH:mm:ss）",
-    "filledQuantity": 已成交数量,
-    "quantity": 委托数量,
-    "status": "cancelling：等待取消",
-    "filledAmount": 已成交金额
-}
-```
-
-- **/order/cancel 撤单**
-
-请求参数:
-
-参数名称|是否必须|类型|描述
----|---|---|---
-orderId|true|String|订单ID号
-
-
-- **/order/batchCancel 批量撤单**
-
-请求参数:
-
-参数名称|是否必须|类型|描述
----|---|---|---
-orderIds|true|String|多个订单ID号（以,隔开）
-
-响应数据中的data说明：
+---|---|---|---|---
+symbol|true|String|交易对（例:BTC_USDT）
+响应数据说明：
 
     {
-    	failed: [
-    		{
-    			orderId："订单ID号",
-    			code:"错误代码",
-    			msg:"错误提示"
-     		}
-    	],
-    	success: [
-    		{
-    			orderId："订单ID号",
-    			code:"提示代码"
-     		}
-    	]
+        "symbol": 交易对（例:BTC_USDT）,
+    	"baseAsset": 基础币种,
+    	"quoteAsset": 计价币种,
+    	"priceDecimal": 价格最大小数位数,
+    	"quantityDecimal": 数量最大小数位数,
+    	"minDepthDecimal": 最小深度小数位数,
+    	"minAmount": 最小交易金额,
+    	"supportedPeriods": K线类型[1m, 5m, ...],
+    	"supportedDepthDecimal": 深度小数位数[1, 2, ...]
     }
+    
+- **/market/assets 获取币种**
 
+响应数据说明：
 
-- **/order/currentOrders 获取当前委托订单**
+    [
+        {
+            "assetCode": 币种代码,
+        	"enabled": 是否可用,
+        	"withdrawEnabled": 是否可提现,
+        	"depositEnabled": 是否可充值
+        }
+    ]
+    
+- **/market/assetDetail 获取币种详情**
 
-请求参数:
+请求参数：
+参数名称|是否必须|类型|描述
+---|---|---|---|---
+assetCode|true|String|币种（例：BTC）
+
+响应数据说明：
+
+    {
+    	"assetCode": 币种代码,
+    	"assetName": 币种名称,
+    	"blockExplorerUrl": 区块浏览器,
+    	"officialSite": 官方网站,
+    	"whitePaperUrl": 白皮书,
+    	"issuePrice": 发行价格,
+    	"issueAmount": 发行量,
+    	"circulationAmount": 流通量,
+    	"description": 币种描述
+    }
+    
+- **/market/tickers 获取交易对行情**
+
+请求参数：
+参数名称|是否必须|类型|描述
+---|---|---|---|---
+symbol|false|String|交易对（例：BTC_USDT）
+响应数据说明：
+
+    [
+        {
+            "symbol": 交易对,
+        	"baseAsset": 基础币种,
+        	"quoteAsset": 计价币种,
+        	"marketGroup": 交易组,
+        	"priceChange": 24小时价格变化量,
+        	"priceChangePercent": 24小时价格变化百分比,
+        	"high": 最高价,
+        	"low": 最低价,
+        	"open": 开盘价,
+        	"latest": 最新成交价,
+        	"usdtValue": USDT价值,
+        	"volume": 24小时成交量,
+        	"amount": 24小时成交额
+        }
+    ]
+    
+- **/market/recent24hTrend 获取24小时价格趋势**
+
+响应数据说明：
+
+    {
+    	交易对1: 价格趋势1,
+    	交易对2: 价格趋势2,
+    	...
+    }
+    
+- **/market/kline 获取K线数据**
+
+参数名称|是否必须|类型|描述|默认值|取值范围
+---|---|---|---|---|---
+symbol|true|String|交易对|
+period|true|String|K线类型||1m、5m、15m、30m、1h、2h、4h、6h、12h、1d、1w
+size|false|Number|获取数量|150|1-1000
+
+响应数据说明：
+
+    [
+        [
+            时间(ms),
+            开盘价,
+            最高价,
+            最低价,
+            收盘价,
+            成交量
+        ]
+    ]
+    
+- **/market/trades 获取交易数据**
 
 参数名称|是否必须|类型|描述
 ---|---|---|---
-symbol|true|String|交易市场（例：BCC_ETH）
-type|false|String|交易类型（buy-limit：限价买入；sell-limit：限价卖出；）
-page|false|Number|页数（默认1）
-size|false|Number|每页条数（默认10）
+symbol|true|String|交易对
 
-响应数据中的data说明：
-	
-	{
-	    "pageNo": 当前页数,
-	    "pageSize": 每页条数,
-	    "total": 总数,
-	    "list": [
-	        {
-	            "orderId": 订单ID号,
-	            "symbol": "交易市场",
-	            "price": 委托价格,
-	            "type": "sell：卖出；buy：买入",
-	            "priceType": "limit：限价；market：市价",
-	            "orderTime": "委托时间（格式：yyyy-MM-dd HH:mm:ss）",
-	            "filledQuantity": 已成交数量,
-	            "quantity": 委托数量,
-	            "status": "cancelling：等待取消",
-	            "filledAmount": 已成交金额
-	        }
-	    ]
-	}
+响应数据说明：
 
+    [
+        {
+            "takerSide": 成交类型：buy买，sell卖,
+        	"price": 成交价格,
+        	"quantity": 成交数量,
+        	"amount": 成交金额,
+        	"tradeTime": 成交时间（格式：HH:mm:ss）,
+        	"tradeFullTime": 成交时间（格式：yyyy-MM-dd HH:mm:ss）
+        }
+    ]
+    
+- **/market/currencyRates 获取汇率**
 
-- **/order/historyOrders 获取历史委托订单**
+响应数据说明：
 
-请求参数:
+    {
+    	"usdt2cny": USDT兑换CNY的汇率,
+    	"usdt2usd": USDT兑换USD的汇率
+    }
+    
+# 交易API #
 
+- **/trade/placeOrder 下单**
+
+请求参数：
 参数名称|是否必须|类型|描述
----|---|---|---
-symbol|true|String|交易市场（例：BCC_ETH）
-type|false|String|交易类型（buy-limit：限价买入；sell-limit：限价卖出）
-page|false|Number|页数（默认1）
-size|false|Number|每页条数（默认10）
+---|---|---|---|---
+symbol|true|String|交易对
+side|true|String|buy：买入，sell：卖出
+orderType|true|String|交易类型，limit限价
+quantity|true|Number|数量
+price|true|Number|价格
 
-响应数据中的data说明：
-	
-	{
-	    "pageNo": 当前页数,
-	    "pageSize": 每页条数,
-	    "total": 总数,
-	    "list": [
-	        {
-	            "orderId": 订单ID号,
-	            "symbol": "交易市场",
-	            "price": 委托价格,
-	            "type": "sell：卖出；buy：买入",
-	            "priceType": "limit：限价；market：市价",
-	            "orderTime": "委托时间（格式：yyyy-MM-dd HH:mm:ss）",
-	            "filledQuantity": 已成交数量,
-	            "quantity": 委托数量,
-	            "status": "cancelling：等待取消",
-	            "filledAmount": 已成交金额
-	        }
-	    ]
-	}
+响应数据说明：订单ID号
 
+- **/trade/cancelOrder 撤单**
 
-- **/order/trades 获取成交记录**
-
-请求参数:
-
+请求参数：
 参数名称|是否必须|类型|描述
----|---|---|---
-symbol|true|String|交易对（例：BCC_ETH）
-page|false|Number|页数（默认1）
-size|false|Number|每页条数（默认10）
+---|---|---|---|
+orderId|true|String|订单ID号
 
-响应数据中的data说明：
-	
-	{
-	    "pageNo": 当前页数,
-	    "pageSize": 每页条数,
-	    "total": 总数,
-	    "list": [
-	        {
-	            "tradeId": 订单ID号,
-	            "tradeTime": "交易时间（格式：yyyy-MM-dd HH:mm:ss）",
-	            "tradeQuantity": 成交数量,
-	            "fee": 手续费,
-	            "amount": 成交金额,
-	            "price": 成交价格,
-	            "symbol": "交易市场"
-	        }
-	    ]
-	}
+- **/trade/getOpenOrders 获取当前委托**
+
+请求参数：
+参数名称|是否必须|类型|描述
+---|---|---|---|---
+symbol|false|String|交易对
+
+响应数据说明：
+
+    [
+        {
+            "orderId": 订单ID号,
+            "baseAsset": 基础币种,
+            "quoteAsset": 计价币种,
+            "side": sell：卖出，buy：买入,
+            "price": 委托价格,
+            "quantity": 委托数量,
+            "filledQuantity": 已成交数量,
+            "filledAmount": 成交金额,
+            "filledAvgPrice": 成交均价,
+            "tradeCount": 交易次数,
+            "orderType": 交易类型，limit：限价,
+            "orderTime": 委托时间（格式：yyyy-MM-dd HH:mm:ss）,
+            "via": "",
+            "version": 版本号
+        }
+    ]
+    
+- **/trade/get24hHistoryOrders 获取24h历史委托**
+
+请求参数：
+参数名称|是否必须|类型|描述
+---|---|---|---|---
+symbol|false|String|交易对
+
+响应数据说明：
+
+    [
+        {
+            "orderId": 订单ID号,
+            "baseAsset": 基础币种,
+            "quoteAsset": 计价币种,
+            "side": sell：卖出，buy：买入,
+            "price": 委托价格,
+            "quantity": 委托数量,
+            "filledQuantity": 已成交数量,
+            "filledAmount": 成交金额,
+            "filledAvgPrice": 成交均价,
+            "tradeCount": 交易次数,
+            "orderType": 交易类型，limit：限价,
+            "orderTime":  委托时间（格式：yyyy-MM-dd HH:mm:ss）,
+            "lastFilledTime": 最后成交时间（格式：yyyy-MM-dd HH:mm:ss）,
+            "via": "",
+            "version": 版本号
+        }
+    ]
+    
+- **/trade/getAccounts 获取账户信息**
+
+请求参数：
+参数名称|是否必须|类型|描述
+---|---|---|---|---
+symbol|false|String|交易对
+
+响应数据说明：
+
+    [
+        {
+            "balance": 账户总额,
+            "frozenBalance": 冻结金额,
+            "assetCode": 币种,
+            "estimateBtcValue": BTC估值,
+            "availableBalance": 可用余额
+        }
+    ]
+    
+- **/trade/listenerKey 获取WebSocket Listener Key **
+
+响应数据：Listener Key
+
+
+
+
