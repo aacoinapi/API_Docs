@@ -18,8 +18,9 @@
 请求参数：
 
 参数名称|是否必须|类型|描述
----|---|---|---|---
+---|---|---|---
 symbol|true|String|交易对（例:BTC_USDT）
+
 响应数据说明：
 
     {
@@ -50,8 +51,9 @@ symbol|true|String|交易对（例:BTC_USDT）
 - **/market/assetDetail 获取币种详情**
 
 请求参数：
+
 参数名称|是否必须|类型|描述
----|---|---|---|---
+---|---|---|---
 assetCode|true|String|币种（例：BTC）
 
 响应数据说明：
@@ -71,9 +73,11 @@ assetCode|true|String|币种（例：BTC）
 - **/market/tickers 获取交易对行情**
 
 请求参数：
+
 参数名称|是否必须|类型|描述
----|---|---|---|---
+---|---|---|---
 symbol|false|String|交易对（例：BTC_USDT）
+
 响应数据说明：
 
     [
@@ -106,9 +110,11 @@ symbol|false|String|交易对（例：BTC_USDT）
     
 - **/market/kline 获取K线数据**
 
+请求参数：
+
 参数名称|是否必须|类型|描述|默认值|取值范围
 ---|---|---|---|---|---
-symbol|true|String|交易对|
+symbol|true|String|交易对
 period|true|String|K线类型||1m、5m、15m、30m、1h、2h、4h、6h、12h、1d、1w
 size|false|Number|获取数量|150|1-1000
 
@@ -126,6 +132,8 @@ size|false|Number|获取数量|150|1-1000
     ]
     
 - **/market/trades 获取交易数据**
+
+请求参数：
 
 参数名称|是否必须|类型|描述
 ---|---|---|---
@@ -158,8 +166,9 @@ symbol|true|String|交易对
 - **/trade/placeOrder 下单**
 
 请求参数：
+
 参数名称|是否必须|类型|描述
----|---|---|---|---
+---|---|---|---
 symbol|true|String|交易对
 side|true|String|buy：买入，sell：卖出
 orderType|true|String|交易类型，limit限价
@@ -171,15 +180,17 @@ price|true|Number|价格
 - **/trade/cancelOrder 撤单**
 
 请求参数：
+
 参数名称|是否必须|类型|描述
----|---|---|---|
+---|---|---|---
 orderId|true|String|订单ID号
 
 - **/trade/getOpenOrders 获取当前委托**
 
 请求参数：
+
 参数名称|是否必须|类型|描述
----|---|---|---|---
+---|---|---|---
 symbol|false|String|交易对
 
 响应数据说明：
@@ -206,8 +217,9 @@ symbol|false|String|交易对
 - **/trade/get24hHistoryOrders 获取24h历史委托**
 
 请求参数：
+
 参数名称|是否必须|类型|描述
----|---|---|---|---
+---|---|---|---
 symbol|false|String|交易对
 
 响应数据说明：
@@ -235,8 +247,9 @@ symbol|false|String|交易对
 - **/trade/getAccounts 获取账户信息**
 
 请求参数：
+
 参数名称|是否必须|类型|描述
----|---|---|---|---
+---|---|---|---
 symbol|false|String|交易对
 
 响应数据说明：
@@ -251,7 +264,7 @@ symbol|false|String|交易对
         }
     ]
     
-- **/trade/listenerKey 获取WebSocket Listener Key **
+- **/trade/listenerKey 获取WebSocket Listener Key**
 
 响应数据：Listener Key
 
