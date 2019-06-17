@@ -266,9 +266,17 @@ symbol|false|String|交易对
     
 - **/trade/listenerKey 获取WebSocket Listener Key**
 
-响应数据：Listener Key
+请求参数：
 
-需要通过APIKey进行权限验证
+参数名称|是否必须|类型|描述
+---|---|---|---
+accessKey|true|String|api accessKey
+sign|true|String|签名 HmacSHA256
+
+响应数据：
+
+    {"resultCode":"ok","data": listenerKey}
+
 
 
 
