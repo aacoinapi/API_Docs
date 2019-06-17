@@ -1,6 +1,6 @@
 # API Reference #
 # 行情API #
-- **/market/groups 获取交易分组**
+- **/api/v2/market/groups 获取交易分组**
 
 响应数据说明：
 
@@ -13,7 +13,7 @@
         }
     ]
 
-- **/market/config 获取交易配置**
+- **/api/v2/market/config 获取交易配置**
 
 请求参数：
 
@@ -35,7 +35,7 @@ symbol|true|String|交易对（例:BTC_USDT）
     	"supportedDepthDecimal": 深度小数位数[1, 2, ...]
     }
     
-- **/market/assets 获取币种**
+- **/api/v2/market/assets 获取币种**
 
 响应数据说明：
 
@@ -48,7 +48,7 @@ symbol|true|String|交易对（例:BTC_USDT）
         }
     ]
     
-- **/market/assetDetail 获取币种详情**
+- **/api/v2/market/assetDetail 获取币种详情**
 
 请求参数：
 
@@ -70,7 +70,7 @@ assetCode|true|String|币种（例：BTC）
     	"description": 币种描述
     }
     
-- **/market/tickers 获取交易对行情**
+- **/api/v2/market/tickers 获取交易对行情**
 
 请求参数：
 
@@ -98,7 +98,7 @@ symbol|false|String|交易对（例：BTC_USDT）
         }
     ]
     
-- **/market/recent24hTrend 获取24小时价格趋势**
+- **/api/v2/market/recent24hTrend 获取24小时价格趋势**
 
 响应数据说明：
 
@@ -108,7 +108,7 @@ symbol|false|String|交易对（例：BTC_USDT）
     	...
     }
     
-- **/market/kline 获取K线数据**
+- **/api/v2/market/kline 获取K线数据**
 
 请求参数：
 
@@ -131,7 +131,7 @@ size|false|Number|获取数量|150|1-1000
         ]
     ]
     
-- **/market/trades 获取交易数据**
+- **/api/v2/market/trades 获取交易数据**
 
 请求参数：
 
@@ -152,7 +152,7 @@ symbol|true|String|交易对
         }
     ]
     
-- **/market/currencyRates 获取汇率**
+- **/api/v2/market/currencyRates 获取汇率**
 
 响应数据说明：
 
@@ -163,7 +163,7 @@ symbol|true|String|交易对
     
 # 交易API #
 
-- **/trade/placeOrder 下单**
+- **/api/v2/trade/placeOrder 下单**
 
 请求参数：
 
@@ -177,7 +177,7 @@ price|true|Number|价格
 
 响应数据说明：订单ID号
 
-- **/trade/cancelOrder 撤单**
+- **/api/v2/trade/cancelOrder 撤单**
 
 请求参数：
 
@@ -185,7 +185,7 @@ price|true|Number|价格
 ---|---|---|---
 orderId|true|String|订单ID号
 
-- **/trade/getOpenOrders 获取当前委托**
+- **/api/v2/trade/getOpenOrders 获取当前委托**
 
 请求参数：
 
@@ -214,7 +214,7 @@ symbol|false|String|交易对
         }
     ]
     
-- **/trade/get24hHistoryOrders 获取24h历史委托**
+- **/api/v2/trade/get24hHistoryOrders 获取24h历史委托**
 
 请求参数：
 
@@ -244,7 +244,7 @@ symbol|false|String|交易对
         }
     ]
     
-- **/trade/getAccounts 获取账户信息**
+- **/api/v2/trade/getAccounts 获取账户信息**
 
 请求参数：
 
@@ -264,7 +264,7 @@ symbol|false|String|交易对
         }
     ]
     
-- **/trade/listenerKey 获取WebSocket Listener Key**
+- **/api/v2/trade/listenerKey 获取WebSocket Listener Key**
 
 请求参数：
 
