@@ -268,6 +268,8 @@ symbol|false|String|交易对
 
 响应数据：Listener Key
 
+需要通过APIKey进行权限验证
+
 
 
 
