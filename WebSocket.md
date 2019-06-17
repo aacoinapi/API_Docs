@@ -171,7 +171,7 @@ Websocket客户端发送如下请求以获取权限：
     {"cmd":"auth","args":["listenerKey"]}
     
     
-其中listenerKey可通过apikey获取, 请参考API接口：[/trade/listenerKey](https://github.com/aacoinapi/API_Docs/blob/master/REST_api_reference.md)
+其中listenerKey可通过apikey获取, 请参考API接口：[/api/v2/trade/listenerKey](https://github.com/aacoinapi/API_Docs/blob/master/REST_api_reference.md)
     
 - **委托单变更**
     
