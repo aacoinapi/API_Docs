@@ -19,13 +19,14 @@ Websocket客户端发送如下请求以订阅特定主题：
 
 - **取消订阅**
 
-    {"cmd":"sub","args":[arg0, arg1, arg2]}
+        {"cmd":"sub","args":[arg0, arg1, arg2]}
+    
     
 其中unsub为取消订阅命令
 
 - **权限验证**
 
-    {"cmd":"auth","args":[arg0, arg1, arg2]}
+        {"cmd":"auth","args":[arg0, arg1, arg2]}
 
 其中auth为权限验证命令
 
