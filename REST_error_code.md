@@ -4,12 +4,14 @@
 
 错误码|描述
 ---|---
-1000|成功
-1001|accessKey有误
-1002|服务器出错
-1003|签名验证失败
-1004|请求太频繁
-1005|参数错误
-1006|请求IP没有绑定
-1007|无效的交易市场
-9999|操作失败
+ok|成功
+error|服务器出错
+api_key_invalid|accessKey有误
+api_timestamp_expired|时间戳过期
+api_invalid_signature|签名验证失败
+429|请求太频繁
+illegal_argument|参数错误
+api_ip_whitelist|请求IP没有绑定
+trade_market_closed|交易市场已关闭
+access_denied|访问被拒绝
+not_supported|不支持
