@@ -35,7 +35,7 @@ AccessKey=xxx
 
 1、按照ASCII码的顺序对参数名进行排序。
 
-accessKey=xxx;symbol=ETH_USDT;timestamp=1561969966
+    accessKey=xxx;symbol=ETH_USDT;timestamp=1561969966
 
 2、按照以上顺序，将各参数使用字符’&’连接，组成最终要进行签名的计算的字符串如下：
 
@@ -45,16 +45,13 @@ accessKey=xxx;symbol=ETH_USDT;timestamp=1561969966
 
 - 需要签名的字符串
 
-
     accessKey=xxx&symbol=xxx&timestamp=xxx
 
 - 进行签名的密钥（SecretKey）
 
-
     b0xxxxxx-c6xxxxxx-94xxxxxx-dxxxx
 
 - 得到签名计算结果并转成16进制编码
-
 
     ccc4c65891f1cd951510ea65e3f2dd87c024972c188f46c60216af2e9d3d9727
 
