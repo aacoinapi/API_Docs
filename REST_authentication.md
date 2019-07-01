@@ -29,7 +29,7 @@ timestamp=15619713
 
 **账户参数**
 
-AccessKey=xxx
+accessKey=xxx
 
 **计算签名所需的步骤：**
 
