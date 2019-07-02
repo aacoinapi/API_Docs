@@ -23,7 +23,7 @@ symbol=BTC_USDT
 
 **时间戳**
 
-timestamp=15619713
+timestamp=1562039574（精确到秒）
 
 **账户参数**
 
@@ -33,7 +33,7 @@ accessKey=xxx
 
 1、按照ASCII码的顺序对参数名进行排序。
 
-    accessKey=xxx;symbol=ETH_USDT;timestamp=1561969966
+    accessKey=xxx;symbol=ETH_USDT;timestamp=1562039574
 
 2、按照以上顺序，将各参数使用字符’&’连接，组成最终要进行签名的计算的字符串如下：
 
