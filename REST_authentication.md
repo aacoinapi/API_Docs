@@ -1,12 +1,12 @@
-#ApiKey获取
+# ApiKey获取
 目前关于apikey申请和修改，请在“个人中心 - API管理”页面进行相关操作。其中AccessKey为API 访问密钥，SecretKey为用户对请求进行签名的密钥（仅申请时可见）。
 
 **重要提示：这两个密钥与账号安全紧密相关，无论何时都请勿向其它人透露。**
 
-#调用频率限制
+# 调用频率限制
 - API：单个`IP`、`用户`调用次数最多为30次/秒，超过30次后将返回Http响应码429，并记录一次违规，1分钟超过10次违规，将返回Http响应码403
 
-#合法请求结构
+# 合法请求结构
 基于安全考虑，除行情API 外的 API 请求都必须进行签名运算。一个合法的请求由以下几部分组成：
 - API服务器地址：`https://api.aacoin.com/api/[请求路径]`，比如`https://api.aacoin.com/api/v2/trade/getOpenOrders`。
 - API 访问密钥（accessKey）： 您申请的 APIKEY 中的AccessKey。
