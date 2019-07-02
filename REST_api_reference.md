@@ -1,17 +1,5 @@
 # API Reference #
 # 行情API #
-- **/api/v2/market/groups 获取交易分组**
-
-响应数据说明：
-
-    {
-    	"resultCode": "ok",
-    	"data": [{
-        	"groupCode": 分组代码,
-        	"enabled": 启用状态,
-        	"groupName": 分组名称
-    	}]
-    }
 
 - **/api/v2/market/config 获取交易配置**
 
@@ -50,32 +38,7 @@ symbol|true|String|交易对（例:BTC_USDT）
     		"depositEnabled": 是否可充值
     	}]
     }
-    
-- **/api/v2/market/assetDetail 获取币种详情**
-
-请求参数：
-
-参数名称|是否必须|类型|描述
----|---|---|---
-assetCode|true|String|币种（例：BTC）
-
-响应数据说明：
-
-    {
-    	"resultCode": "ok",
-    	"data": {	
-        	"assetCode": 币种代码,
-        	"assetName": 币种名称,
-        	"blockExplorerUrl": 区块浏览器,
-        	"officialSite": 官方网站,
-        	"whitePaperUrl": 白皮书,
-        	"issuePrice": 发行价格,
-        	"issueAmount": 发行量,
-        	"circulationAmount": 流通量,
-        	"description": 币种描述
-    	}
-    }
-    
+        
 - **/api/v2/market/tickers 获取交易对行情**
 
 请求参数：
@@ -104,20 +67,7 @@ symbol|false|String|交易对（例：BTC_USDT）
         	"amount": 24小时成交额
     	}]
     }
-    
-- **/api/v2/market/recent24hTrend 获取24小时价格趋势**
-
-响应数据说明：
-
-    {
-    	"resultCode": "ok",
-    	"data": {
-    		"ETH_BTC": ["0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.190000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000", "0.000000"],
-            交易对2: 价格趋势2,
-            ...
-        }
-    }
-    
+       
 - **/api/v2/market/kline 获取K线数据**
 
 请求参数：
@@ -255,6 +205,33 @@ symbol|false|String|交易对
     	}]
     }
     
+- **/api/v2/market/getOrderDetails 获取交易详情**
+
+请求参数：
+
+参数名称|是否必须|类型|描述
+---|---|---|---
+orderId|true|String|订单号
+
+响应数据说明：
+
+    {
+    	"resultCode": "ok",
+    	"data": [{
+    		"orderId": 订单号,
+    		"baseAsset": 基础币种,
+    		"quoteAsset": 计价币种,
+    		"takerSide": taker(买方buy，卖方sell),
+    		"price": 价格,
+    		"quantity": 数量,
+    		"amount": 金额,
+    		"tradeTime": 成交时间（格式：yyyy-MM-dd HH:mm:ss）,
+    		"finalFee": 实际手续费,
+    		"finalFeeAsset": 手续费币种,
+    		"side": 买入buy，卖出sell
+    	}]
+    }
+
 - **/api/v2/trade/getAccounts 获取账户信息**
 
 请求参数：
