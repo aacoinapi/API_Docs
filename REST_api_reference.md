@@ -18,7 +18,7 @@
 响应数据说明：
 ```
 {
-"serverTime": 服务器当前时间，精确到毫秒
+    "serverTime": 服务器当前时间，精确到毫秒
 }
 ```
 - **GET /api/v2/market/config 获取交易配置**
@@ -31,12 +31,12 @@ symbol|true|String|交易对（例:BTC_USDT）
 响应数据说明：
 ```
 {
-	"symbol": 交易对（例:BTC_USDT）,
-	"baseAsset": 基础币种,
-	"quoteAsset": 计价币种,
-	"priceDecimal": 价格最大小数位数,
-	"quantityDecimal": 数量最大小数位数,
-	"minAmount": 最小下单金额
+    "symbol": 交易对（例:BTC_USDT）,
+    "baseAsset": 基础币种,
+    "quoteAsset": 计价币种,
+    "priceDecimal": 价格最大小数位数,
+    "quantityDecimal": 数量最大小数位数,
+    "minAmount": 最小下单金额
 }
 ```
 - **GET /api/v2/market/configAll 获取交易配置**
@@ -45,12 +45,12 @@ symbol|true|String|交易对（例:BTC_USDT）
 响应数据说明：
 ```
 [{
-	"symbol": 交易对（例:BTC_USDT）,
-	"baseAsset": 基础币种,
-	"quoteAsset": 计价币种,
-	"priceDecimal": 价格最大小数位数,
-	"quantityDecimal": 数量最大小数位数,
-	"minAmount": 最小下单金额
+    "symbol": 交易对（例:BTC_USDT）,
+    "baseAsset": 基础币种,
+    "quoteAsset": 计价币种,
+    "priceDecimal": 价格最大小数位数,
+    "quantityDecimal": 数量最大小数位数,
+    "minAmount": 最小下单金额
 }]
 ```    
 - **GET /api/v2/market/tickers 获取交易对行情**
@@ -147,7 +147,7 @@ price|true|Number|价格
 
 响应数据说明：
 ```
-订单ID号
+orderId
 ```
 - **GET /api/v2/trade/cancelOrder 撤单**
 
