@@ -24,6 +24,7 @@
 - **GET /api/v2/market/config 获取交易配置**
 
 请求参数：
+
 参数名称|是否必须|类型|描述
 ---|---|---|---
 symbol|true|String|交易对（例:BTC_USDT）
@@ -39,7 +40,7 @@ symbol|true|String|交易对（例:BTC_USDT）
     "minAmount": 最小下单金额
 }
 ```
-- **GET /api/v2/market/configAll 获取交易配置**
+- **GET /api/v2/market/configAll 获取所有交易对的配置**
 
 
 响应数据说明：
