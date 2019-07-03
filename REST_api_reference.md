@@ -17,9 +17,9 @@
 
 响应数据说明：
 
-{
+  {
    "serverTime": 服务器当前时间，精确到毫秒
-}
+  }
 
 - **GET /api/v2/market/config 获取交易配置**
 
