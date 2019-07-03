@@ -2,11 +2,7 @@
 
 ## 基本信息 ##
 
-接入url: wss://aacoin.com/stream
-
-成功建立与Websocket服务器的连接后，返回数据：
-
-    {"topic":"info","data":"Welcome to AAcoin!"}
+Websocket 服务器地址: wss://aacoin.com/stream
     
 
 - **订阅主题**
@@ -26,9 +22,9 @@ Websocket客户端发送如下请求以订阅特定主题：
 
 - **权限验证**
 
-        {"cmd":"auth","args":[arg0, arg1, arg2]}
+        {"cmd":"auth","args":[listenerKey]}
 
-其中auth为权限验证命令
+其中auth为权限验证命令，`listenerKey`的获取参考RestAPI文档。
 
 ## K线数据 ##
 
@@ -50,7 +46,7 @@ BTC_USDT为交易对，15m为k线时间周期，周期范围[1m、5m、15m、30m
     		[时间戳, 开盘价格, 最高价格, 最低价格, 收盘价格, 交易量]
     	]
     }
-开启订阅后，首次推送full全数据，后退只推送partial当前数据
+开启订阅后，首次推送full全数据，之后只推送partial当前数据
     
 - **取消订阅k线**
 
@@ -76,14 +72,12 @@ Websocket客户端发送如下请求以订阅行情数据主题：
     		"symbol": 交易对,   
     		"baseAsset": 基础币种,     
     		"quoteAsset": 计价币种, 
-    		"marketGroup": 所属分组, 
-    		"priceChange": 涨跌,
+    		"priceChange": 涨跌量,
     		"priceChangePercent": 涨跌比例,
     		"high": 最高价,
     		"low": 最低价,
     		"open": 开盘价,
     		"latest": 最新价,
-    		"usdtValue": usdt估值,
     		"volume": 成交量（计价币种）,
     		"amount": 成交量（基础币种）
     	}]
@@ -141,17 +135,15 @@ Websocket客户端发送如下请求以订阅深度主题：
     {
     	"topic": "orderbook",
     	"symbol": "ETH_USDT",   //交易对
-    	"scope": "full",    //全数据
+    	"scope": "full",   
     	"data": {
     		"bids": [{          //买入
     			"price": 价格,
-    			"qty": 数量,
-    			"w": ""
+    			"qty": 数量
     		}],
     		"asks": [{          //卖出
     			"price": 价格,
-    			"qty": 数量,
-    			"w": ""
+    			"qty": 数量
     		}]
     	}
     }
@@ -180,7 +172,7 @@ Websocket客户端发送如下请求以获取权限：
     {
     	"topic": "order_event",
     	"data": {
-    		"eventType": order_update订单更新（新订单或部分成交），order_finish订单已成交,
+    		"eventType": order_update订单更新（新订单或部分成交），order_finish订单已成交或者已撤单,
     		"orderId": 订单ID,
     		"baseAsset": 基础币种,
     		"quoteAsset": 计价币种,
