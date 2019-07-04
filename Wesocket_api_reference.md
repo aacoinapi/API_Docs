@@ -2,7 +2,7 @@
 
 ## 基本信息 ##
 
-Websocket 服务器地址: wss://aacoin.com/stream
+Websocket 服务器地址: `wss://www.aacoin.com/stream`
     
 
 - **订阅主题**
