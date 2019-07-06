@@ -183,6 +183,24 @@ symbol|false|String|交易对
     "orderTime": 委托时间（格式：yyyy-MM-dd HH:mm:ss）
 }]
  ```   
+ - **GET /api/v2/trade/getAccounts 获取账户**
+
+请求参数：
+
+参数名称|是否必须|类型|描述
+---|---|---|---
+symbol|false|String|交易对可选，如果不为空，将只返回和这个交易对的相关的两个账户；否则返回所有的账户
+
+响应数据说明：
+```
+[{
+    "assetCode": 币种,
+    "balance": 总余额,
+    "frozenBalance": 冻结,
+    "availableBalance": 可用余额
+}]
+ ```   
+ 
 - **GET /api/v2/trade/get24hHistoryOrders 获取24h历史委托**
 
 请求参数：
