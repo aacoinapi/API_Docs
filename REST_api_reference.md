@@ -227,7 +227,7 @@ symbol|false|String|交易对
     "lastFilledTime": 最后成交时间（格式：yyyy-MM-dd HH:mm:ss）,
 }]
 ```   
-- **GET /api/v2/market/getOrderDetails 获取交易详情**
+- **GET /api/v2/trade/getOrderDetails 获取交易详情**
 
 请求参数：
 
