@@ -134,6 +134,23 @@ symbol|true|String|交易对
     
 # 交易API #
 
+ - **GET /api/v2/trade/getAccounts 获取账户**
+
+请求参数：
+
+参数名称|是否必须|类型|描述
+---|---|---|---
+symbol|false|String|交易对可选，如果不为空，将只返回和这个交易对的相关的两个账户；否则返回所有的账户
+
+响应数据说明：
+```
+[{
+    "assetCode": 币种,
+    "balance": 总余额,
+    "frozenBalance": 冻结,
+    "availableBalance": 可用余额
+}]
+ ```   
 - **POST /api/v2/trade/placeOrder 下单**
 
 请求参数：
@@ -158,55 +175,6 @@ orderId
 ---|---|---|---
 orderId|true|String|订单ID号
 
-- **GET /api/v2/trade/getOpenOrders 获取当前委托**
-
-请求参数：
-
-参数名称|是否必须|类型|描述
----|---|---|---
-symbol|false|String|交易对
-
-响应数据说明：
-```
-[{
-    "orderId": 订单ID号,
-    "baseAsset": 基础币种,
-    "quoteAsset": 计价币种,
-    "side": sell：卖出，buy：买入,
-    "price": 委托价格,
-    "quantity": 委托数量,
-    "filledQuantity": 已成交数量,
-    "filledAmount": 成交金额,
-    "filledAvgPrice": 成交均价,
-    "tradeCount": 成交次数,
-    "orderType": 交易类型，limit：限价,
-    "orderTime": 委托时间（格式：yyyy-MM-dd HH:mm:ss）
-}]
- ```   
- - **GET /api/v2/trade/getOrderTrades 获取交易详情**
-
-请求参数：
-
-参数名称|是否必须|类型|描述
----|---|---|---
-orderId|true|String|订单号
-
-响应数据说明：
-```
-[{
-    "orderId": 订单号,
-    "baseAsset": 基础币种,
-    "quoteAsset": 计价币种,
-    "takerSide": taker(买方buy，卖方sell),
-    "price": 价格,
-    "quantity": 数量,
-    "amount": 金额,
-    "tradeTime": 成交时间（格式：yyyy-MM-dd HH:mm:ss）,
-    "finalFee": 实际手续费,
-    "finalFeeAsset": 手续费币种,
-    "side": 买入buy，卖出sell
-}]
-```
 - **GET /api/v2/trade/getOrderDetail 获取订单详情**
 
 请求参数：
@@ -232,21 +200,53 @@ orderId|true|String|订单号
     "orderTime": 委托时间（格式：yyyy-MM-dd HH:mm:ss）
 }
 ```
- - **GET /api/v2/trade/getAccounts 获取账户**
+- **GET /api/v2/trade/getOrderTrades 获取交易详情**
 
 请求参数：
 
 参数名称|是否必须|类型|描述
 ---|---|---|---
-symbol|false|String|交易对可选，如果不为空，将只返回和这个交易对的相关的两个账户；否则返回所有的账户
+orderId|true|String|订单号
 
 响应数据说明：
 ```
 [{
-    "assetCode": 币种,
-    "balance": 总余额,
-    "frozenBalance": 冻结,
-    "availableBalance": 可用余额
+    "orderId": 订单号,
+    "baseAsset": 基础币种,
+    "quoteAsset": 计价币种,
+    "takerSide": taker(买方buy，卖方sell),
+    "price": 价格,
+    "quantity": 数量,
+    "amount": 金额,
+    "tradeTime": 成交时间（格式：yyyy-MM-dd HH:mm:ss）,
+    "finalFee": 实际手续费,
+    "finalFeeAsset": 手续费币种,
+    "side": 买入buy，卖出sell
+}]
+```
+- **GET /api/v2/trade/getOpenOrders 获取当前委托**
+
+请求参数：
+
+参数名称|是否必须|类型|描述
+---|---|---|---
+symbol|false|String|交易对
+
+响应数据说明：
+```
+[{
+    "orderId": 订单ID号,
+    "baseAsset": 基础币种,
+    "quoteAsset": 计价币种,
+    "side": sell：卖出，buy：买入,
+    "price": 委托价格,
+    "quantity": 委托数量,
+    "filledQuantity": 已成交数量,
+    "filledAmount": 成交金额,
+    "filledAvgPrice": 成交均价,
+    "tradeCount": 成交次数,
+    "orderType": 交易类型，limit：限价,
+    "orderTime": 委托时间（格式：yyyy-MM-dd HH:mm:ss）
 }]
  ```   
  
@@ -276,25 +276,6 @@ symbol|false|String|交易对
     "lastFilledTime": 最后成交时间（格式：yyyy-MM-dd HH:mm:ss）,
 }]
 ```   
-
-- **GET /api/v2/trade/getAccounts 获取账户信息**
-
-请求参数：
-
-参数名称|是否必须|类型|描述
----|---|---|---
-symbol|false|String|交易对
-
-响应数据说明：
-```
-[{
-    "balance": 账户总额,
-    "frozenBalance": 冻结金额,
-    "assetCode": 币种,
-    "estimateBtcValue": BTC估值,
-    "availableBalance": 可用余额
-}]
-```  
 - **GET /api/v2/trade/listenerKey 获取WebSocket Listener Key**
 
 请求参数：
